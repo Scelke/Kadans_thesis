@@ -50,7 +50,7 @@ public class Camera extends Activity {
         Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-
+/*
         File destination = new File(Environment.getExternalStorageDirectory(),
                 System.currentTimeMillis() + ".jpg");
 
@@ -64,7 +64,10 @@ public class Camera extends Activity {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        ivImage.setImageBitmap(thumbnail);
+        }*/
+
+        Intent intent = new Intent(this, PhotoReceiver.class);
+        intent.putExtra("picture", thumbnail);
+        startActivity(intent);
     }
 }
